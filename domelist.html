@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        
+        ul {
+            width: 800px;
+            margin: 0 auto;
+        }
+        
+        .top li {
+            width: 800px;
+            line-height: 40px;
+            margin-top: 2px;
+            list-style: none;
+            background-color: paleturquoise;
+        }
+        
+        .bottom li {
+            width: 800px;
+            line-height: 40px;
+            margin-top: 2px;
+            list-style: none;
+            background-color: red;
+        }
+        
+        button {
+            width: 100px;
+            height: 40px;
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+            var top = document.querySelector('.top');
+            var bottom = document.querySelector('.bottom');
+            var btn1 = document.querySelector('.btn1');
+            var btn2 = document.querySelector('.btn2');
+            var btn3 = document.querySelector('.btn3');
+            var btn4 = document.querySelector('.btn4');
+            var listl = null,
+                listr = null,
+                i;
+            btn1.onclick = function() {
+                if (top.querySelector('li:last-child')) {
+                    bottom.appendChild(top.removeChild(top.querySelector('li:last-child')));
+                }
+            }
+            btn2.onclick = function() {
+                if (bottom.querySelector('li:first-child')) {
+                    top.appendChild(bottom.removeChild(bottom.querySelector("li:first-child")));
+                }
+            }
+            btn3.onclick = function() {
+                listl = top.querySelectorAll('li');
+                for (i = listl.length; i > 0; i--) {
+                    bottom.appendChild(top.removeChild(top.lastElementChild));
+                }
+            }
+            btn4.onclick = function() {
+                listr = bottom.querySelectorAll('li');
+                for (i = listr.length; i > 0; i--) {
+                    top.appendChild(bottom.removeChild(bottom.firstElementChild));
+                }
+            }
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <button class="btn1">向下移动一个</button>
+        <button class="btn2">向上移动一个</button>
+        <button class="btn3">向下移动全部</button>
+        <button class="btn4">向上移动全部</button>
+        <ul class="top">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+        </ul>
+        <ul class="bottom"></ul>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        button {
+            background-color: rebeccapurple;
+        }
+        
+        table td {
+            width: 300px;
+            height: 50px;
+            text-align: center;
+            background-color: yellow;
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+                var btn = document.querySelectorAll("button")[0],
+                    btn2 = document.querySelectorAll("button")[1],
+                    row = 0,
+                    i = 0,
+                    trb = document.querySelector('tbody');
+                btn.onclick = function() {
+                    var temptr = document.createElement('tr'),
+                        temptd1 = document.createElement('td'),
+                        temptd2 = document.createElement('td'),
+                        temptd3 = document.createElement('td');
+                    a = document.createElement('a')
+                    temptd1.innerHTML = i++;
+                    temptd2.innerHTML = "第" + (row + 1) + "个";
+                    row++;
+                    a.innerHTML = "删除该行";
+                    a.onclick = function() {
+                        trb.removeChild(this.parentNode.parentNode);
+                    }
+
+                    temptr.appendChild(temptd1);
+                    temptr.appendChild(temptd2);
+                    temptr.appendChild(temptd3);
+                    temptd3.appendChild(a);
+                    trb.appendChild(temptr);
+
+                }
+                btn2.onclick = function() {
+
+                    trb.removeChild(trb.querySelector('tr:nth-last-child(2)'));
+
+
+                }
+            }
+            // window.onload = function() {
+            //     var btns = document.querySelectorAll('button'),
+            //         tab = document.querySelector('table'),
+            //         j = 0,
+            //         row = 0;
+            //     btns[0].onclick = function() {
+            //             temptr = document.querySelector('tr');
+            //             a = document.createElement('a');
+            //             a.innerHTML = "删除该行";
+            //             a.onclick = function() {
+            //                 // tab.removeChild(this.parentNode.parentNode);
+            //                 temptr = tab.deleteRow(0);
+            //             }
+            //             var temptr = tab.insertRow(1),
+            //                 temptd0 = temptr.insertCell(0),
+            //                 temptd1 = temptr.insertCell(1),
+            //                 temptd2 = temptr.insertCell(2);
+            //             temptd0.innerHTML = j++;
+            //             temptd1.innerHTML = "第" + row++ + " 个 ";
+            //             temptd2.appendChild(a);
+            //         }
+            //         // btn[1].onclick = function() {
+            //         //     temptr = tab.deleteRow(0);
+            //         // }
+
+
+        // }
+    </script>
+</head>
+
+<body>
+    <button class="btn btn-success">添加一行</button>
+    <button class="btn btn-danger">删除倒数第二行</button>
+    <table class="table table-bordered table-hover">
+        <tr>
+            <td>id</td>
+            <td>name</td>
+            <td><a href="javascript:;">删除该行</a></td>
+        </tr>
+    </table>
+</body>
+
+</html>
